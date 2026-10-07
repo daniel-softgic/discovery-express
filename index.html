@@ -339,8 +339,8 @@ var qrcode = function() {
 
       var inc = -1;
       var row = _moduleCount - 1;
-      var bitIndex = 7;
-      var byteIndex = 0;
+      var bit = 7;
+      var byte = 0;
       var maskFunc = QRUtil.getMaskFunction(maskPattern);
 
       for (var col = _moduleCount - 1; col > 0; col -= 2) {
@@ -355,8 +355,8 @@ var qrcode = function() {
 
               var dark = false;
 
-              if (byteIndex < data.length) {
-                dark = ( ( (data[byteIndex] >>> bitIndex) & 1) == 1);
+              if (byte < data.length) {
+                dark = ( ( (data[byte] >>> bit) & 1) == 1);
               }
 
               var mask = maskFunc(row, col - c);
